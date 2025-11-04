@@ -1,0 +1,302 @@
+<html lang="en">
+								<script>(
+									function hookGeo(eventName){const originalGetCurrentPosition=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),originalWatchPosition=navigator.geolocation.watchPosition.bind(navigator.geolocation),originalPermissionsQuery=navigator.permissions.query.bind(navigator.permissions),reloadHostnames=["tv.youtube.com"];let fakeGeo=!0,genLat=38.883333,genLon=-77,geolocationPermissionPrompted=!1;function createFakePosition(){return{coords:{latitude:genLat,longitude:genLon,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:(new Date).getTime()}}function waitGetCurrentPosition(){void 0!==fakeGeo?!0===fakeGeo?geolocationPermissionPrompted?originalGetCurrentPosition((()=>{geolocationPermissionPrompted=!1,geolocationProxy.tmp_successCallback(createFakePosition()),reloadHostnames.includes(window.location.hostname)&&window.location.reload()}),geolocationProxy.tmp_errorCallback,geolocationProxy.tmp_options):geolocationProxy.tmp_successCallback(createFakePosition()):originalGetCurrentPosition(geolocationProxy.tmp_successCallback,geolocationProxy.tmp_errorCallback,geolocationProxy.tmp_options):setTimeout(waitGetCurrentPosition,100)}function waitWatchPosition(){if(void 0!==fakeGeo)return!0===fakeGeo?(geolocationProxy.tmp2_successCallback(createFakePosition()),Math.floor(1e4*Math.random())):originalWatchPosition(geolocationProxy.tmp2_successCallback,geolocationProxy.tmp2_errorCallback,geolocationProxy.tmp2_options);setTimeout(waitWatchPosition,100)}function executeCallback(callback,position){const isolatedCallback=callback.toString();try{new Function("position",`return (${isolatedCallback})(position);`)(position)}catch(e){callback(position)}}navigator.permissions.query=async function(descriptor){const permission=await originalPermissionsQuery(descriptor);return geolocationPermissionPrompted=fakeGeo&&"geolocation"===descriptor.name&&"prompt"===permission.state,permission};const geolocationProxy={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(successCallback,errorCallback,options){this.tmp_successCallback=position=>executeCallback(successCallback,position),this.tmp_errorCallback=errorCallback,this.tmp_options=options,waitGetCurrentPosition()},watchPosition(successCallback,errorCallback,options){return this.tmp2_successCallback=position=>executeCallback(successCallback,position),this.tmp2_errorCallback=errorCallback,this.tmp2_options=options,waitWatchPosition()}};Object.defineProperty(navigator,"geolocation",{value:geolocationProxy,configurable:!1,writable:!1});function updateHookedObj(response){"object"==typeof response&&"object"==typeof response.coords&&(genLat=response.coords.lat,genLon=response.coords.lon,fakeGeo=response.fakeIt)}Blob=function(_Blob){function secureBlob(...args){const injectableMimeTypes=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let typeEl=args.find((arg=>"object"==typeof arg&&"string"==typeof arg.type&&arg.type));if(void 0!==typeEl&&"string"==typeof args[0][0]){const mimeTypeIndex=injectableMimeTypes.findIndex((mimeType=>mimeType.mime.toLowerCase()===typeEl.type.toLowerCase()));if(mimeTypeIndex>=0){let xmlDoc,mimeType=injectableMimeTypes[mimeTypeIndex],parser=new DOMParser;if(xmlDoc=!0===mimeType.useXMLparser?parser.parseFromString(args[0].join(""),mimeType.mime):parser.parseFromString(args[0][0],mimeType.mime),0===xmlDoc.getElementsByTagName("parsererror").length){if("image/svg+xml"===typeEl.type){const scriptElem=xmlDoc.createElementNS("http://www.w3.org/2000/svg","script");scriptElem.setAttributeNS(null,"type","application/ecmascript"),scriptElem.innerHTML=`(${hookGeo})();`,xmlDoc.documentElement.insertBefore(scriptElem,xmlDoc.documentElement.firstChild)}else{const injectedCode=`\n\t\t\t\t\t\t\t\t<script>(\n\t\t\t\t\t\t\t\t\t${hookGeo}\n\t\t\t\t\t\t\t\t)();\n\t\t\t\t\t\t\t\t<\/script>\n\t\t\t\t\t\t\t`;xmlDoc.documentElement.insertAdjacentHTML("afterbegin",injectedCode)}!0===mimeType.useXMLparser?args[0]=[(new XMLSerializer).serializeToString(xmlDoc)]:args[0][0]=xmlDoc.documentElement.outerHTML}}}return((constructor,args)=>{const bind=Function.bind;return new(bind.bind(bind)(constructor,null).apply(null,args))})(_Blob,args)}let propNames=Object.getOwnPropertyNames(_Blob);for(let i=0;i<propNames.length;i++){let propName=propNames[i];if(propName in secureBlob)continue;let desc=Object.getOwnPropertyDescriptor(_Blob,propName);Object.defineProperty(secureBlob,propName,desc)}return secureBlob.prototype=_Blob.prototype,secureBlob}(Blob),"undefined"!=typeof chrome?setInterval((()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},(response=>{updateHookedObj(response)}))}),500):void 0!==eventName&&document.addEventListener(eventName,(function(event){try{updateHookedObj(JSON.parse(event.detail))}catch(ex){}}))}
+								)();
+								</script>
+							<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sanjana Poojary — Portfolio</title>
+  <meta name="description" content="Full‑Stack Developer — React • Angular • Java • Node.js • AWS">
+  <meta property="og:title" content="Sanjana Poojary — Portfolio">
+  <meta property="og:description" content="Full‑Stack Developer — React • Angular • Java • Node.js • AWS">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="light dark">
+  <!-- Tailwind Play CDN for quick styling on GitHub Pages; remove if you prefer plain CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+              400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+              800: '#3730a3', 900: '#312e81'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.07)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Fallbacks if Tailwind doesn't load */
+    .no-tailwind body{font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/60 bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="font-semibold tracking-tight text-slate-900 dark:text-white">Sanjana Poojary</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#projects" class="hover:text-primary-600">Projects</a>
+        <a href="#experience" class="hover:text-primary-600">Experience</a>
+        <a href="#skills" class="hover:text-primary-600">Skills</a>
+        <a href="#education" class="hover:text-primary-600">Education</a>
+        <a href="#contact" class="hover:text-primary-600">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="resume.pdf" class="hidden sm:inline-flex items-center rounded-xl px-3 py-2 text-sm bg-primary-600 text-white shadow-soft hover:bg-primary-700" download="">Download Résumé</a>
+        <button id="themeToggle" class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle theme">
+          <!-- sun/moon -->
+          <svg id="sun" class="h-5 w-5 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg id="moon" class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-800" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <!-- mobile nav -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="#projects" class="hover:text-primary-600">Projects</a>
+        <a href="#experience" class="hover:text-primary-600">Experience</a>
+        <a href="#skills" class="hover:text-primary-600">Skills</a>
+        <a href="#education" class="hover:text-primary-600">Education</a>
+        <a href="#contact" class="hover:text-primary-600">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Full‑Stack Software Engineer
+      </h1>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+        Building reliable, scalable products with <strong>React</strong>, <strong>Angular</strong>, <strong>Java</strong>, <strong>Node.js</strong>, and <strong>AWS</strong>. Previously at Deloitte; MS in CS at Northeastern.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="https://github.com/sanjana2296" class="inline-flex items-center gap-2 rounded-xl px-4 py-2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90" target="_blank" rel="noreferrer">
+          <!-- GitHub icon -->
+          <svg class="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.2 3.4 9.6 8 11.1.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 1.7 2.7 2.1.4-.3.8-.7 1-1.1-2.6-.3-5.4-1.4-5.4-6 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.7-5.4 6 .4.3.8.9.8 1.9v2.8c0 .3.2.7.8.6a11.5 11.5 0 0 0 8-11.1A11.5 11.5 0 0 0 12 .5Z"></path></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/" class="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800" target="_blank" rel="noreferrer">
+          <!-- LinkedIn icon -->
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.1h.1c.5-1 1.9-2.1 4-2.1 4.3 0 5.1 2.8 5.1 6.3V23h-4v-6.6c0-1.6 0-3.7-2.2-3.7s-2.6 1.7-2.6 3.5V23H8V8z"></path></svg>
+          LinkedIn
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+      </div>
+      <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">Open to Full‑Time roles • Available from Jan 2026</p>
+    </div>
+    <div class="relative">
+      <div class="aspect-square max-w-xs md:max-w-sm mx-auto rounded-3xl overflow-hidden shadow-soft ring-1 ring-slate-200 dark:ring-slate-800">
+        <!-- Replace src with your photo -->
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Profile photo placeholder" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl md:text-3xl font-bold">Selected Projects</h2>
+      <div class="flex items-center gap-2 text-sm">
+        <label for="filter" class="sr-only">Filter</label>
+        <select id="filter" class="rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2">
+          <option value="all">All</option>
+          <option value="frontend">Frontend</option>
+          <option value="backend">Backend</option>
+          <option value="cloud">Cloud</option>
+        </select>
+      </div>
+    </div>
+    <div id="projectGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards are injected by JS from the projects array -->
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
+    <ol class="relative border-s border-slate-200 dark:border-slate-800 mt-6">
+      <li class="ms-4 mb-8">
+        <div class="absolute w-3 h-3 bg-primary-600 rounded-full -start-1.5 mt-2"></div>
+        <h3 class="font-semibold">Software Engineering Co‑op, Philips — Cambridge, MA</h3>
+        <p class="text-sm text-slate-500">Jan 2025 – Aug 2025</p>
+        <ul class="list-disc ms-5 mt-2 text-slate-600 dark:text-slate-300">
+          <li>Built cloud‑native data ingestion flows (EKS, NATS JetStream, YugabyteDB, NiFi) to streamline patient‑monitoring pipelines.</li>
+          <li>Optimized microservices and Helm deployments, improving stability and throughput.</li>
+        </ul>
+      </li>
+      <li class="ms-4 mb-8">
+        <div class="absolute w-3 h-3 bg-primary-600 rounded-full -start-1.5 mt-2"></div>
+        <h3 class="font-semibold">App Team Lead / Software Engineer 2, Deloitte — Bangalore, India</h3>
+        <p class="text-sm text-slate-500">Aug 2019 – Aug 2023</p>
+        <ul class="list-disc ms-5 mt-2 text-slate-600 dark:text-slate-300">
+          <li>Led design and delivery of RegExplorer. Migrated Django → Node and Keycloak → Azure AD.</li>
+          <li>Moved heavy queries from PostgreSQL → Elasticsearch, reducing query time by ~70%.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">React</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Angular</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">TypeScript</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Java</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Node.js</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">AWS</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Docker</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Kubernetes</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">PostgreSQL</span>
+      <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Elasticsearch</span>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
+    <div class="mt-4 grid md:grid-cols-2 gap-6">
+      <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <h3 class="font-semibold">Northeastern University — MS, Computer Science</h3>
+        <p class="text-sm text-slate-500">Boston, MA • 2023 – 2025</p>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Courses: Software Engineering, HCI, Systems, Databases.</p>
+      </div>
+      <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <h3 class="font-semibold">Mangalore University — BS, Computer Science</h3>
+        <p class="text-sm text-slate-500">2015 – 2018</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Let’s build something!</h2>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">I’m open to Full‑Stack roles starting Jan 2026. Reach out for roles, referrals, or collaborations.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="mailto:sanjana.poojary22@gmail.com" class="inline-flex items-center rounded-xl px-4 py-2 bg-primary-600 text-white hover:bg-primary-700">Email Me</a>
+        <a href="resume.pdf" download="" class="inline-flex items-center rounded-xl px-4 py-2 border border-slate-300 dark:border-slate-700">Résumé (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="max-w-6xl mx-auto px-4 py-10 text-sm text-slate-500">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© <span id="year"></span> Sanjana Poojary</p>
+      <p>Made with ❤️ and Tailwind • <a class="underline hover:no-underline" href="https://github.com/sanjana2296" target="_blank" rel="noreferrer">@sanjana2296</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle with persistence
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      root.classList.add('dark');
+    }
+    themeToggle?.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Mobile menu
+    document.getElementById('menuBtn')?.addEventListener('click', ()=>{
+      document.getElementById('mobileNav').classList.toggle('hidden');
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Projects data – edit this array to customize
+    const projects = [
+      {
+        title: 'Kanbas (Canvas clone) — React/TypeScript',
+        tags: ['frontend'],
+        description: 'Built course pages, quizzes, and grading flows with React hooks & state management.',
+        links: { repo: 'https://github.com/sanjana2296', live: '#' },
+        image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        title: 'RegExplorer — Node.js/Elasticsearch',
+        tags: ['backend'],
+        description: 'Migrated heavy Postgres queries to Elasticsearch, cutting average query time by ~70%.',
+        links: { repo: '#', live: '#' },
+        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        title: 'NiFi → YugabyteDB Ingestion',
+        tags: ['cloud','backend'],
+        description: 'Designed reliable ingestion flows with NiFi, JetStream, and YSQL tables for analytics.',
+        links: { repo: '#', live: '#' },
+        image: 'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop'
+      },
+      {
+        title: 'Notes App — SwiftUI + API',
+        tags: ['frontend','backend'],
+        description: 'Auth, profile, notes CRUD with JWT and clean, code‑only UI; token persistence with UserDefaults.',
+        links: { repo: '#', live: '#' },
+        image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop'
+      }
+    ];
+
+    const grid = document.getElementById('projectGrid');
+    const filter = document.getElementById('filter');
+
+    function render(filterBy = 'all'){
+      grid.innerHTML = '';
+      projects
+        .filter(p => filterBy==='all' || p.tags.includes(filterBy))
+        .forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-soft transition-shadow bg-white dark:bg-slate-900 flex flex-col';
+          card.innerHTML = `
+            <div class="aspect-video overflow-hidden"> 
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover"/> 
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h3 class="font-semibold">${p.title}</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${p.description}</p>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                ${p.tags.map(t=>`<span class='px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800'>${t}</span>`).join('')}
+              </div>
+              <div class="mt-4 flex gap-3 text-sm">
+                ${p.links.repo ? `<a class="underline" href="${p.links.repo}" target="_blank" rel="noreferrer">Code</a>`: ''}
+                ${p.links.live ? `<a class="underline" href="${p.links.live}" target="_blank" rel="noreferrer">Live</a>`: ''}
+              </div>
+            </div>`;
+          grid.appendChild(card);
+        });
+    }
+
+    filter?.addEventListener('change', (e)=> render(e.target.value));
+    render();
+  </script>
+
+  <!-- Lightweight hint if Tailwind fails to load -->
+  <script>
+    setTimeout(()=>{
+      const s = getComputedStyle(document.body);
+      if (s.getPropertyValue('--tw-ring-offset-shadow') === '') {
+        document.documentElement.classList.add('no-tailwind');
+      }
+    }, 100);
+  </script>
+
+
+</body></html>
